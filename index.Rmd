@@ -1,0 +1,33 @@
+---
+title: "Some Useful Tricks"
+author: "@idaejin"
+date: 
+output:
+  html_document:
+    keep_md: yes
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+
+# Convert a matrix into $\LaTeX$
+
+Create a composition matrix 
+
+```{r, message=FALSE}
+x = diag(3)%x%matrix(rep(1,5),nrow=1)
+x
+library(xtable)
+x <- xtable(x,digits=0)
+print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include.rownames=FALSE, include.colnames=FALSE)
+```
+
+# `library(pander)`
+
+```{r table, results='asis'}
+library(pander)
+tab <- matrix(runif(3*4),3,4)
+panderOptions("table.style", "grid") # "simple"
+pander(tab, caption="make it table with pander")
+```
