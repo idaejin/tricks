@@ -1,12 +1,13 @@
 ---
 title: "Some Useful Tricks"
-author: "@idaejin"
-date: 
+author: '@idaejin'
+date: ""
 output:
   html_document:
+    highlight: haddock
     keep_md: yes
     number_sections: yes
-    theme: united
+    theme: spacelab
     toc: yes
 ---
 
@@ -31,3 +32,52 @@ tab <- matrix(runif(3*4),3,4)
 panderOptions("table.style", "grid") # "simple"
 pander(tab, caption="make it table with pander")
 ```
+
+# Extract Rnw Sweave Rmd Knitr files to *.R
+
+```{r,eval=FALSE}
+library(knitr)
+
+purl("File.Rmd",output="File.R")
+
+# In RSweave
+
+Stangle("File.Rnw",output="File.R")
+```
+
+# Working with data frames in R
+
+## Drop unused factor levels
+
+```{r,eval=FALSE}
+library(gdata)
+drop.levels(x, reorder=TRUE, ...)
+```
+
+#  Remove all elements in R except a few specified
+
+```{r}
+library(gdata) # function keep()
+rm(list=keep(OBJECT.))  # remove all elements in ls() except OBJECT.
+```
+
+-----------------------------------------------------
+
+**Contact**
+
+Alameda de Mazarredo, 14
+
+E-48009 Bilbao, Basque Country - Spain
+
+Tel: +34 946 567 842 (Ext. 277)
+
+Fax: +34 946 567 843
+
+**email:** dlee[at]bcamath.org
+
+**Github** [idaejin](https://github.com/idaejin/)
+
+**BCAM webpage** [dlee](http://www.bcamath.org/en/people/dlee)
+
+<img src="http://www.bcamath.org/public_images/logo_bcam.jpg" style="width: 150px;" align="right">
+

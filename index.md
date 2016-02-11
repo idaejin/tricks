@@ -1,5 +1,6 @@
 # Some Useful Tricks
 @idaejin  
+  
 
 
 # Convert a matrix into $\LaTeX$
@@ -31,7 +32,7 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 
 ```
 ## % latex table generated in R 3.2.0 by xtable 1.7-4 package
-## % Thu Feb  4 19:23:32 2016
+## % Thu Feb 11 12:14:33 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
 ##   0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -51,12 +52,101 @@ pander(tab, caption="make it table with pander")
 
 
 
-+--------+--------+--------+---------+
-| 0.8671 | 0.2867 | 0.8021 | 0.9758  |
-+--------+--------+--------+---------+
-| 0.3958 | 0.806  | 0.8375 | 0.8152  |
-+--------+--------+--------+---------+
-| 0.948  | 0.6982 | 0.5507 | 0.04105 |
-+--------+--------+--------+---------+
++--------+---------+--------+---------+
+| 0.4684 | 0.3165  | 0.3534 | 0.3392  |
++--------+---------+--------+---------+
+| 0.8103 | 0.8394  | 0.418  | 0.03921 |
++--------+---------+--------+---------+
+| 0.4175 | 0.02549 | 0.8655 | 0.1014  |
++--------+---------+--------+---------+
 
 Table: make it table with pander
+
+# Extract Rnw Sweave Rmd Knitr files to *.R
+
+
+```r
+library(knitr)
+
+purl("File.Rmd",output="File.R")
+
+# In RSweave
+
+Stangle("File.Rnw",output="File.R")
+```
+
+# Working with data frames in R
+
+## Drop unused factor levels
+
+
+```r
+library(gdata)
+drop.levels(x, reorder=TRUE, ...)
+```
+
+#  Remove all elements in R except a few specified
+
+
+```r
+library(gdata) # function keep()
+```
+
+```
+## gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.
+```
+
+```
+## 
+```
+
+```
+## gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.
+```
+
+```
+## 
+## Attaching package: 'gdata'
+```
+
+```
+## The following object is masked from 'package:stats':
+## 
+##     nobs
+```
+
+```
+## The following object is masked from 'package:utils':
+## 
+##     object.size
+```
+
+```r
+rm(list=keep(OBJECT.))  # remove all elements in ls() except OBJECT.
+```
+
+```
+## Warning in keep(OBJECT.): you tried to keep "OBJECT." which doesn't exist
+## in workspace - nothing was removed
+```
+
+-----------------------------------------------------
+
+**Contact**
+
+Alameda de Mazarredo, 14
+
+E-48009 Bilbao, Basque Country - Spain
+
+Tel: +34 946 567 842 (Ext. 277)
+
+Fax: +34 946 567 843
+
+**email:** dlee[at]bcamath.org
+
+**Github** [idaejin](https://github.com/idaejin/)
+
+**BCAM webpage** [dlee](http://www.bcamath.org/en/people/dlee)
+
+<img src="http://www.bcamath.org/public_images/logo_bcam.jpg" style="width: 150px;" align="right">
+
