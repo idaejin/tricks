@@ -26,7 +26,7 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 
 # `library(pander)`
 
-```{r table, results='asis'}
+```{r table, results='asis',eval=FALSE}
 library(pander)
 tab <- matrix(runif(3*4),3,4)
 panderOptions("table.style", "grid") # "simple"
@@ -59,6 +59,39 @@ drop.levels(x, reorder=TRUE, ...)
 ```{r,eval=FALSE}
 library(gdata) # function keep()
 rm(list=keep(OBJECT.))  # remove all elements in ls() except OBJECT.
+```
+
+
+
+# Change `.pdf` image files to `.png`
+
+## One single `.pdf`
+
+```{r,eval=FALSE}
+library("animation")
+ani.options(outdir = getwd())
+
+pdf("bm.pdf")
+plot(1:10)
+dev.off()
+
+im.convert("bm.pdf", output = "bm.jpeg")
+im.convert("bm.pdf", output = "bm.png")
+```
+
+## Several `.pdf` files
+
+
+
+```{r, eval=FALSE}
+# read all files with .pdf extension
+files <- list.files(pattern = "\\.(pdf|PDF)$")
+newfiles<-sub(pattern=".pdf",replacement=".png",files)
+# convert pdf to png
+library(animation)
+for(i in 1:length(files)){
+  im.convert(files[i],output=newfiles[i],clean=FALSE)
+}
 ```
 
 -----------------------------------------------------

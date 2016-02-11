@@ -32,7 +32,7 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 
 ```
 ## % latex table generated in R 3.2.0 by xtable 1.7-4 package
-## % Thu Feb 11 12:22:43 2016
+## % Thu Feb 11 15:52:19 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
 ##   0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -49,18 +49,6 @@ tab <- matrix(runif(3*4),3,4)
 panderOptions("table.style", "grid") # "simple"
 pander(tab, caption="make it table with pander")
 ```
-
-
-
-+--------+---------+--------+--------+
-| 0.2938 | 0.06357 | 0.3063 | 0.6892 |
-+--------+---------+--------+--------+
-| 0.1069 | 0.03281 | 0.9528 | 0.8166 |
-+--------+---------+--------+--------+
-| 0.2947 | 0.2181  | 0.3538 | 0.1163 |
-+--------+---------+--------+--------+
-
-Table: make it table with pander
 
 # Extract Rnw Sweave Rmd Knitr files to *.R
 
@@ -91,6 +79,41 @@ drop.levels(x, reorder=TRUE, ...)
 ```r
 library(gdata) # function keep()
 rm(list=keep(OBJECT.))  # remove all elements in ls() except OBJECT.
+```
+
+
+
+# Change `.pdf` image files to `.png`
+
+## One single `.pdf`
+
+
+```r
+library("animation")
+ani.options(outdir = getwd())
+
+pdf("bm.pdf")
+plot(1:10)
+dev.off()
+
+im.convert("bm.pdf", output = "bm.jpeg")
+im.convert("bm.pdf", output = "bm.png")
+```
+
+## Several `.pdf` files
+
+
+
+
+```r
+# read all files with .pdf extension
+files <- list.files(pattern = "\\.(pdf|PDF)$")
+newfiles<-sub(pattern=".pdf",replacement=".png",files)
+# convert pdf to png
+library(animation)
+for(i in 1:length(files)){
+  im.convert(files[i],output=newfiles[i],clean=FALSE)
+}
 ```
 
 -----------------------------------------------------
