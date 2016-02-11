@@ -32,7 +32,7 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 
 ```
 ## % latex table generated in R 3.2.0 by xtable 1.7-4 package
-## % Thu Feb 11 12:14:33 2016
+## % Thu Feb 11 12:22:43 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
 ##   0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -52,13 +52,13 @@ pander(tab, caption="make it table with pander")
 
 
 
-+--------+---------+--------+---------+
-| 0.4684 | 0.3165  | 0.3534 | 0.3392  |
-+--------+---------+--------+---------+
-| 0.8103 | 0.8394  | 0.418  | 0.03921 |
-+--------+---------+--------+---------+
-| 0.4175 | 0.02549 | 0.8655 | 0.1014  |
-+--------+---------+--------+---------+
++--------+---------+--------+--------+
+| 0.2938 | 0.06357 | 0.3063 | 0.6892 |
++--------+---------+--------+--------+
+| 0.1069 | 0.03281 | 0.9528 | 0.8166 |
++--------+---------+--------+--------+
+| 0.2947 | 0.2181  | 0.3538 | 0.1163 |
++--------+---------+--------+--------+
 
 Table: make it table with pander
 
@@ -90,44 +90,7 @@ drop.levels(x, reorder=TRUE, ...)
 
 ```r
 library(gdata) # function keep()
-```
-
-```
-## gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.
-```
-
-```
-## 
-```
-
-```
-## gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.
-```
-
-```
-## 
-## Attaching package: 'gdata'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     nobs
-```
-
-```
-## The following object is masked from 'package:utils':
-## 
-##     object.size
-```
-
-```r
 rm(list=keep(OBJECT.))  # remove all elements in ls() except OBJECT.
-```
-
-```
-## Warning in keep(OBJECT.): you tried to keep "OBJECT." which doesn't exist
-## in workspace - nothing was removed
 ```
 
 -----------------------------------------------------

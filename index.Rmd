@@ -56,7 +56,7 @@ drop.levels(x, reorder=TRUE, ...)
 
 #  Remove all elements in R except a few specified
 
-```{r}
+```{r,eval=FALSE}
 library(gdata) # function keep()
 rm(list=keep(OBJECT.))  # remove all elements in ls() except OBJECT.
 ```

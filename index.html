@@ -100,7 +100,7 @@ x</code></pre>
 x &lt;-<span class="st"> </span><span class="kw">xtable</span>(x,<span class="dt">digits=</span><span class="dv">0</span>)
 <span class="kw">print</span>(x, <span class="dt">floating=</span><span class="ot">FALSE</span>, <span class="dt">tabular.environment=</span><span class="st">&quot;bmatrix&quot;</span>,<span class="dt">hline.after=</span><span class="ot">NULL</span>, <span class="dt">include.rownames=</span><span class="ot">FALSE</span>, <span class="dt">include.colnames=</span><span class="ot">FALSE</span>)</code></pre>
 <pre><code>## % latex table generated in R 3.2.0 by xtable 1.7-4 package
-## % Thu Feb 11 12:14:33 2016
+## % Thu Feb 11 12:22:43 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 
 ##   0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 
@@ -119,26 +119,26 @@ tab &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw
 <col width="12%"></col>
 <col width="13%"></col>
 <col width="12%"></col>
-<col width="13%"></col>
+<col width="12%"></col>
 </colgroup>
 <tbody>
 <tr class="odd">
-<td align="left"><p>0.4684</p></td>
-<td align="left"><p>0.3165</p></td>
-<td align="left"><p>0.3534</p></td>
-<td align="left"><p>0.3392</p></td>
+<td align="left"><p>0.2938</p></td>
+<td align="left"><p>0.06357</p></td>
+<td align="left"><p>0.3063</p></td>
+<td align="left"><p>0.6892</p></td>
 </tr>
 <tr class="even">
-<td align="left"><p>0.8103</p></td>
-<td align="left"><p>0.8394</p></td>
-<td align="left"><p>0.418</p></td>
-<td align="left"><p>0.03921</p></td>
+<td align="left"><p>0.1069</p></td>
+<td align="left"><p>0.03281</p></td>
+<td align="left"><p>0.9528</p></td>
+<td align="left"><p>0.8166</p></td>
 </tr>
 <tr class="odd">
-<td align="left"><p>0.4175</p></td>
-<td align="left"><p>0.02549</p></td>
-<td align="left"><p>0.8655</p></td>
-<td align="left"><p>0.1014</p></td>
+<td align="left"><p>0.2947</p></td>
+<td align="left"><p>0.2181</p></td>
+<td align="left"><p>0.3538</p></td>
+<td align="left"><p>0.1163</p></td>
 </tr>
 </tbody>
 </table>
@@ -163,21 +163,8 @@ tab &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw
 </div>
 <div id="remove-all-elements-in-r-except-a-few-specified" class="section level1">
 <h1><span class="header-section-number">5</span> Remove all elements in R except a few specified</h1>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gdata) <span class="co"># function keep()</span></code></pre>
-<pre><code>## gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.</code></pre>
-<pre><code>## </code></pre>
-<pre><code>## gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.</code></pre>
-<pre><code>## 
-## Attaching package: 'gdata'</code></pre>
-<pre><code>## The following object is masked from 'package:stats':
-## 
-##     nobs</code></pre>
-<pre><code>## The following object is masked from 'package:utils':
-## 
-##     object.size</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">keep</span>(OBJECT.))  <span class="co"># remove all elements in ls() except OBJECT.</span></code></pre>
-<pre><code>## Warning in keep(OBJECT.): you tried to keep &quot;OBJECT.&quot; which doesn't exist
-## in workspace - nothing was removed</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gdata) <span class="co"># function keep()</span>
+<span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">keep</span>(OBJECT.))  <span class="co"># remove all elements in ls() except OBJECT.</span></code></pre>
 <hr />
 <p><strong>Contact</strong></p>
 <p>Alameda de Mazarredo, 14</p>
