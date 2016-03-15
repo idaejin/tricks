@@ -86,6 +86,8 @@ im.convert("bm.pdf", output = "bm.png")
 ```{r, eval=FALSE}
 # read all files with .pdf extension
 files <- list.files(pattern = "\\.(pdf|PDF)$")
+
+# create a new vble with .png extension 
 newfiles<-sub(pattern=".pdf",replacement=".png",files)
 # convert pdf to png
 library(animation)
@@ -93,6 +95,34 @@ for(i in 1:length(files)){
   im.convert(files[i],output=newfiles[i],clean=FALSE)
 }
 ```
+
+## Save the orientation 3D rgl plot
+
+Found on [stackoverflow.com](http://stackoverflow.com/questions/16362381/save-the-orientation-of-a-rgl-plot3d-plot)
+
+```{r, eval=FALSE}
+## In an inital session:
+
+library(rgl)
+plot3d(iris) 
+
+## Now move the image around to an orientation you like
+
+## Save RGL parameters to a list object
+pp <- par3d(no.readonly=TRUE)
+
+## Save the list to a text file
+dput(pp, file="irisView.R", control = "all")
+
+## Then, in a later session, to recreate the plot just as you had it:
+
+library(rgl)
+pp <- dget("irisView.R")
+plot3d(iris)
+par3d(pp)
+
+```
+
 
 -----------------------------------------------------
 

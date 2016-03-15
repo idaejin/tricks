@@ -31,8 +31,8 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 ```
 
 ```
-## % latex table generated in R 3.2.0 by xtable 1.7-4 package
-## % Thu Feb 11 15:52:19 2016
+## % latex table generated in R 3.2.3 by xtable 1.7-4 package
+## % Mon Mar 14 17:51:15 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
 ##   0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -108,6 +108,8 @@ im.convert("bm.pdf", output = "bm.png")
 ```r
 # read all files with .pdf extension
 files <- list.files(pattern = "\\.(pdf|PDF)$")
+
+# create a new vble with .png extension 
 newfiles<-sub(pattern=".pdf",replacement=".png",files)
 # convert pdf to png
 library(animation)
@@ -115,6 +117,34 @@ for(i in 1:length(files)){
   im.convert(files[i],output=newfiles[i],clean=FALSE)
 }
 ```
+
+## Save the orientation 3D rgl plot
+
+Found on [stackoverflow.com](http://stackoverflow.com/questions/16362381/save-the-orientation-of-a-rgl-plot3d-plot)
+
+
+```r
+## In an inital session:
+
+library(rgl)
+plot3d(iris) 
+
+## Now move the image around to an orientation you like
+
+## Save RGL parameters to a list object
+pp <- par3d(no.readonly=TRUE)
+
+## Save the list to a text file
+dput(pp, file="irisView.R", control = "all")
+
+## Then, in a later session, to recreate the plot just as you had it:
+
+library(rgl)
+pp <- dget("irisView.R")
+plot3d(iris)
+par3d(pp)
+```
+
 
 -----------------------------------------------------
 
