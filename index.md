@@ -31,8 +31,8 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 ```
 
 ```
-## % latex table generated in R 3.2.3 by xtable 1.7-4 package
-## % Mon Mar 14 17:51:15 2016
+## % latex table generated in R 3.2.3 by xtable 1.8-2 package
+## % Tue May 10 01:24:56 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
 ##   0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -118,7 +118,33 @@ for(i in 1:length(files)){
 }
 ```
 
-## Save the orientation 3D rgl plot
+## Convert `.pdf` files to `.eps`
+
+A single file
+
+```r
+/Applications/Inkscape.app/Contents/Resources/bin/inkscape --export-eps test.eps -w 1024 -h 768 test.pdf
+```
+or 
+
+```r
+/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E test.eps test.pdf
+```
+
+This is not very efficient but it works :P
+
+
+```r
+# read all files with .pdf extension
+pdf.files <- list.files(pattern = "\\.(pdf|PDF)$")
+# create a new vble with .eps extension 
+eps.files<-sub(pattern=".pdf",replacement=".eps",pdf.files)
+
+# create a pdf2eps.txt file with the commands to copy&paste to Terminal
+write(paste("/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E",eps.files,pdf.files),file="pdf2eps.txt")
+```
+
+# Save the orientation 3D rgl plot
 
 Found on [stackoverflow.com](http://stackoverflow.com/questions/16362381/save-the-orientation-of-a-rgl-plot3d-plot)
 

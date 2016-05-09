@@ -96,7 +96,30 @@ for(i in 1:length(files)){
 }
 ```
 
-## Save the orientation 3D rgl plot
+## Convert `.pdf` files to `.eps`
+
+A single file
+```{r, eval=FALSE}
+/Applications/Inkscape.app/Contents/Resources/bin/inkscape --export-eps test.eps -w 1024 -h 768 test.pdf
+```
+or 
+```{r, eval=FALSE}
+/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E test.eps test.pdf
+```
+
+This is not very efficient but it works :P
+
+```{r, eval=FALSE}
+# read all files with .pdf extension
+pdf.files <- list.files(pattern = "\\.(pdf|PDF)$")
+# create a new vble with .eps extension 
+eps.files<-sub(pattern=".pdf",replacement=".eps",pdf.files)
+
+# create a pdf2eps.txt file with the commands to copy&paste to Terminal
+write(paste("/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E",eps.files,pdf.files),file="pdf2eps.txt")
+```
+
+# Save the orientation 3D rgl plot
 
 Found on [stackoverflow.com](http://stackoverflow.com/questions/16362381/save-the-orientation-of-a-rgl-plot3d-plot)
 
