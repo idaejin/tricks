@@ -148,9 +148,9 @@ $(document).ready(function () {
 <li><a href="#change-.pdf-image-files-to-.png"><span class="toc-section-number">6</span> Change <code>.pdf</code> image files to <code>.png</code></a><ul>
 <li><a href="#one-single-.pdf"><span class="toc-section-number">6.1</span> One single <code>.pdf</code></a></li>
 <li><a href="#several-.pdf-files"><span class="toc-section-number">6.2</span> Several <code>.pdf</code> files</a></li>
-<li><a href="#convert-.pdf-files-to-.eps"><span class="toc-section-number">6.3</span> Convert <code>.pdf</code> files to <code>.eps</code></a></li>
 </ul></li>
-<li><a href="#save-the-orientation-3d-rgl-plot"><span class="toc-section-number">7</span> Save the orientation 3D rgl plot</a></li>
+<li><a href="#convert-.pdf-files-to-.eps"><span class="toc-section-number">7</span> Convert <code>.pdf</code> files to <code>.eps</code></a></li>
+<li><a href="#save-the-orientation-3d-rgl-plot"><span class="toc-section-number">8</span> Save the orientation 3D rgl plot</a></li>
 </ul>
 </div>
 
@@ -171,7 +171,7 @@ x</code></pre></div>
 x &lt;-<span class="st"> </span><span class="kw">xtable</span>(x,<span class="dt">digits=</span><span class="dv">0</span>)
 <span class="kw">print</span>(x, <span class="dt">floating=</span><span class="ot">FALSE</span>, <span class="dt">tabular.environment=</span><span class="st">&quot;bmatrix&quot;</span>,<span class="dt">hline.after=</span><span class="ot">NULL</span>, <span class="dt">include.rownames=</span><span class="ot">FALSE</span>, <span class="dt">include.colnames=</span><span class="ot">FALSE</span>)</code></pre></div>
 <pre><code>## % latex table generated in R 3.2.3 by xtable 1.8-2 package
-## % Tue May 10 01:24:56 2016
+## % Tue May 10 01:59:28 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 
 ##   0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 
@@ -235,9 +235,13 @@ for(i in <span class="dv">1</span>:<span class="kw">length</span>(files)){
   <span class="kw">im.convert</span>(files[i],<span class="dt">output=</span>newfiles[i],<span class="dt">clean=</span><span class="ot">FALSE</span>)
 }</code></pre></div>
 </div>
-<div id="convert-.pdf-files-to-.eps" class="section level2">
-<h2><span class="header-section-number">6.3</span> Convert <code>.pdf</code> files to <code>.eps</code></h2>
-<p>A single file</p>
+</div>
+<div id="convert-.pdf-files-to-.eps" class="section level1">
+<h1><span class="header-section-number">7</span> Convert <code>.pdf</code> files to <code>.eps</code></h1>
+<p>This requires <strong>Inkscape</strong></p>
+<ul>
+<li>A single file</li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">/Applications/Inkscape.app/Contents/Resources/bin/inkscape --export-eps test.eps -w <span class="dv">1024</span> -h <span class="dv">768</span> test.pdf</code></pre></div>
 <p>or</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E test.eps test.pdf</code></pre></div>
@@ -247,12 +251,17 @@ pdf.files &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span
 <span class="co"># create a new vble with .eps extension </span>
 eps.files&lt;-<span class="kw">sub</span>(<span class="dt">pattern=</span><span class="st">&quot;.pdf&quot;</span>,<span class="dt">replacement=</span><span class="st">&quot;.eps&quot;</span>,pdf.files)
 
-<span class="co"># create a pdf2eps.txt file with the commands to copy&amp;paste to Terminal</span>
-<span class="kw">write</span>(<span class="kw">paste</span>(<span class="st">&quot;/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E&quot;</span>,eps.files,pdf.files),<span class="dt">file=</span><span class="st">&quot;pdf2eps.txt&quot;</span>)</code></pre></div>
-</div>
+<span class="co"># create a pdf2eps.sh bash file and run it from R</span>
+zz &lt;-<span class="st"> </span><span class="kw">file</span>(<span class="st">&quot;pdf2eps.sh&quot;</span>,<span class="st">&quot;w&quot;</span>)
+<span class="kw">writeLines</span>(<span class="st">&quot;#!/bin/bash&quot;</span>,<span class="dt">con=</span>zz,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
+<span class="kw">writeLines</span>(<span class="kw">paste</span>(<span class="st">&quot;/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E&quot;</span>,eps.files,pdf.files),<span class="dt">con=</span>zz,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
+<span class="kw">close</span>(zz)
+
+<span class="co"># Run bash script from R</span>
+<span class="kw">system</span>(<span class="st">&quot;./pdf2eps.sh&quot;</span>)</code></pre></div>
 </div>
 <div id="save-the-orientation-3d-rgl-plot" class="section level1">
-<h1><span class="header-section-number">7</span> Save the orientation 3D rgl plot</h1>
+<h1><span class="header-section-number">8</span> Save the orientation 3D rgl plot</h1>
 <p>Found on <a href="http://stackoverflow.com/questions/16362381/save-the-orientation-of-a-rgl-plot3d-plot">stackoverflow.com</a></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## In an inital session:
 

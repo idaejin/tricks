@@ -32,7 +32,7 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 
 ```
 ## % latex table generated in R 3.2.3 by xtable 1.8-2 package
-## % Tue May 10 01:24:56 2016
+## % Tue May 10 01:59:28 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
 ##   0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -118,9 +118,11 @@ for(i in 1:length(files)){
 }
 ```
 
-## Convert `.pdf` files to `.eps`
+# Convert `.pdf` files to `.eps`
 
-A single file
+This requires **Inkscape**
+
+- A single file
 
 ```r
 /Applications/Inkscape.app/Contents/Resources/bin/inkscape --export-eps test.eps -w 1024 -h 768 test.pdf
@@ -140,8 +142,14 @@ pdf.files <- list.files(pattern = "\\.(pdf|PDF)$")
 # create a new vble with .eps extension 
 eps.files<-sub(pattern=".pdf",replacement=".eps",pdf.files)
 
-# create a pdf2eps.txt file with the commands to copy&paste to Terminal
-write(paste("/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E",eps.files,pdf.files),file="pdf2eps.txt")
+# create a pdf2eps.sh bash file and run it from R
+zz <- file("pdf2eps.sh","w")
+writeLines("#!/bin/bash",con=zz,sep="\n")
+writeLines(paste("/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E",eps.files,pdf.files),con=zz,sep="\n")
+close(zz)
+
+# Run bash script from R
+system("./pdf2eps.sh")
 ```
 
 # Save the orientation 3D rgl plot
