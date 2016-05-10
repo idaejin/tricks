@@ -32,7 +32,7 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 
 ```
 ## % latex table generated in R 3.2.3 by xtable 1.8-2 package
-## % Tue May 10 01:59:28 2016
+## % Tue May 10 02:05:46 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
 ##   0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -143,10 +143,10 @@ pdf.files <- list.files(pattern = "\\.(pdf|PDF)$")
 eps.files<-sub(pattern=".pdf",replacement=".eps",pdf.files)
 
 # create a pdf2eps.sh bash file and run it from R
-zz <- file("pdf2eps.sh","w")
-writeLines("#!/bin/bash",con=zz,sep="\n")
-writeLines(paste("/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E",eps.files,pdf.files),con=zz,sep="\n")
-close(zz)
+sh.file <- file("pdf2eps.sh","w")
+writeLines("#!/bin/bash",con=sh.file,sep="\n")
+writeLines(paste("/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E",eps.files,pdf.files),con=sh.file,sep="\n")
+close(sh.file)
 
 # Run bash script from R
 system("./pdf2eps.sh")
