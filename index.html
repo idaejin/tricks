@@ -171,7 +171,7 @@ x</code></pre></div>
 x &lt;-<span class="st"> </span><span class="kw">xtable</span>(x,<span class="dt">digits=</span><span class="dv">0</span>)
 <span class="kw">print</span>(x, <span class="dt">floating=</span><span class="ot">FALSE</span>, <span class="dt">tabular.environment=</span><span class="st">&quot;bmatrix&quot;</span>,<span class="dt">hline.after=</span><span class="ot">NULL</span>, <span class="dt">include.rownames=</span><span class="ot">FALSE</span>, <span class="dt">include.colnames=</span><span class="ot">FALSE</span>)</code></pre></div>
 <pre><code>## % latex table generated in R 3.2.3 by xtable 1.8-2 package
-## % Tue May 10 02:05:46 2016
+## % Tue May 10 02:07:53 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 
 ##   0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 
@@ -245,7 +245,7 @@ for(i in <span class="dv">1</span>:<span class="kw">length</span>(files)){
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">/Applications/Inkscape.app/Contents/Resources/bin/inkscape --export-eps test.eps -w <span class="dv">1024</span> -h <span class="dv">768</span> test.pdf</code></pre></div>
 <p>or</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E test.eps test.pdf</code></pre></div>
-<p>This is not very efficient but it works :P</p>
+<p>This is not the most efficient code, but it works :P</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># read all files with .pdf extension</span>
 pdf.files &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.(pdf|PDF)$&quot;</span>)
 <span class="co"># create a new vble with .eps extension </span>

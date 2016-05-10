@@ -32,7 +32,7 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 
 ```
 ## % latex table generated in R 3.2.3 by xtable 1.8-2 package
-## % Tue May 10 02:05:46 2016
+## % Tue May 10 02:07:53 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
 ##   0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -133,7 +133,7 @@ or
 /Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E test.eps test.pdf
 ```
 
-This is not very efficient but it works :P
+This is not the most efficient code, but it works :P
 
 
 ```r

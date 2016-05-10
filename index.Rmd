@@ -109,7 +109,7 @@ or
 /Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -E test.eps test.pdf
 ```
 
-This is not very efficient but it works :P
+This is not the most efficient code, but it works :P
 
 ```{r, eval=FALSE}
 # read all files with .pdf extension
