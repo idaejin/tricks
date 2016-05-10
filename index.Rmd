@@ -96,9 +96,9 @@ for(i in 1:length(files)){
 }
 ```
 
-# Convert `.pdf` files to `.eps`
+# Convert `.pdf` files to `.eps` using **Inkscape** converter
 
-This requires **Inkscape**
+This requires **Inkscape** (and MacOS)
 
 - A single file
 ```{r, eval=FALSE}

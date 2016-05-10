@@ -32,7 +32,7 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 
 ```
 ## % latex table generated in R 3.2.3 by xtable 1.8-2 package
-## % Tue May 10 02:07:53 2016
+## % Tue May 10 02:09:19 2016
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
 ##   0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -118,9 +118,9 @@ for(i in 1:length(files)){
 }
 ```
 
-# Convert `.pdf` files to `.eps`
+# Convert `.pdf` files to `.eps` using **Inkscape** converter
 
-This requires **Inkscape**
+This requires **Inkscape** (and MacOS)
 
 - A single file
 
