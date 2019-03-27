@@ -153,6 +153,42 @@ plot3d(iris)
 par3d(pp)
 
 ```
+# Find points within a rectangle 
+
+source [here](https://stackoverflow.com/questions/34308600/identify-points-within-a-rectangle-in-a-scatterplot)
+
+```{r}
+# function
+loc.box <- function(x,y){
+  print("choose bottom left corner")
+  p1 <- locator(1)
+  print("choose top right corner")
+  p2 <- locator(1)
+  rect(p1$x, p1$y, p2$x, p2$y, border=3, col=rgb(0,1,0,0.1))
+  incl <- which(
+    x >= p1$x &
+    x <= p2$x &
+    y >= p1$y &
+    y <= p2$y
+  )
+  return(incl)
+}
+
+# data
+set.seed(1)
+n <- 100
+x <- runif(n)
+y <- runif(n)
+
+# plot and select
+op <- par(ps=9, mar=c(4,4,1,1))
+plot(x, y, pch=20, cex=0.3)
+text(x, y, labels=seq(x), pos=3)
+par(op)
+res <- loc.box(x,y)
+res
+```
+
 
 
 -----------------------------------------------------

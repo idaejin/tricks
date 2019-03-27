@@ -1,6 +1,15 @@
-# Some Useful Tricks
-@idaejin  
-  
+---
+title: "Some Useful Tricks"
+author: '@idaejin'
+date: ""
+output:
+  html_document:
+    highlight: haddock
+    keep_md: yes
+    number_sections: yes
+    theme: spacelab
+    toc: yes
+---
 
 
 # Convert a matrix into $\LaTeX$
@@ -31,8 +40,8 @@ print(x, floating=FALSE, tabular.environment="bmatrix",hline.after=NULL, include
 ```
 
 ```
-## % latex table generated in R 3.2.3 by xtable 1.8-2 package
-## % Tue May 10 02:09:19 2016
+## % latex table generated in R 3.5.2 by xtable 1.8-3 package
+## % Wed Mar 27 19:36:33 2019
 ## \begin{bmatrix}{rrrrrrrrrrrrrrr}
 ##   1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
 ##   0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -178,6 +187,57 @@ pp <- dget("irisView.R")
 plot3d(iris)
 par3d(pp)
 ```
+# Find points within a rectangle 
+
+source [here](https://stackoverflow.com/questions/34308600/identify-points-within-a-rectangle-in-a-scatterplot)
+
+
+```r
+# function
+loc.box <- function(x,y){
+  print("choose bottom left corner")
+  p1 <- locator(1)
+  print("choose top right corner")
+  p2 <- locator(1)
+  rect(p1$x, p1$y, p2$x, p2$y, border=3, col=rgb(0,1,0,0.1))
+  incl <- which(
+    x >= p1$x &
+    x <= p2$x &
+    y >= p1$y &
+    y <= p2$y
+  )
+  return(incl)
+}
+
+# data
+set.seed(1)
+n <- 100
+x <- runif(n)
+y <- runif(n)
+
+# plot and select
+op <- par(ps=9, mar=c(4,4,1,1))
+plot(x, y, pch=20, cex=0.3)
+text(x, y, labels=seq(x), pos=3)
+par(op)
+res <- loc.box(x,y)
+```
+
+![](index_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+
+```
+## [1] "choose bottom left corner"
+## [1] "choose top right corner"
+```
+
+```r
+res
+```
+
+```
+## integer(0)
+```
+
 
 
 -----------------------------------------------------
